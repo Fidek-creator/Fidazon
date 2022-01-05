@@ -15,7 +15,7 @@
     
     <link rel="stylesheet" href="style.css">
     
-    <title>Fidazon</title>
+    <title>Fidazon - Strona główna</title>
 </head>
 <body>
     
@@ -40,6 +40,19 @@
                 </p>
             </center>
             
+            <div class="flex justify-end ">
+                    <a href="koszyk.html" class="contrast flex">
+                        <i class="gg-shopping-cart"></i>
+                            <p class="koszyk ml-2" >
+                                Koszyk
+                            </p>
+                            <p class="ml-1">
+                                 {{suma}}PLN
+                            </p>
+                    </a>
+
+            </div>
+
             <div class="grid">
                 <div>
                     <aside>
@@ -60,10 +73,10 @@
                 </div>
 
                 <div>
-                    <article class="md:mt-12">
+                    <article>
                         <img src="src/kom/5.jpg" alt="">
-                            <b>G4M3R HERO i5‑11400F/16GB/1TB/RTX3060/W11x</b>
-                                <hr/><a data-target="modal-example" onClick="toggleModal(event)" role="button" class="mt-2 mr-2">Kup teraz!</a>
+                            <b>G4M3R HERO i5‑11400F/16GB/1TB/RTX3060</b>
+                                <hr/><a @click="kup(7450)" href="#" data-target="modal-example" onClick="toggleModal(event)" role="button" class="mt-2 mr-2">Kup teraz!</a>
                             <b>7 450,00 zł</b>
                     </article>
                     
@@ -73,7 +86,7 @@
                             <b>Dell Vostro 3888 MT i5‑10400/16GB/512/Win10P</b>
                         </div>
                         <div>
-                            <hr/><a data-target="modal-example" onClick="toggleModal(event)" role="button" class="mt-2 mr-2">Kup teraz!</a>
+                            <hr/><a @click="kup(7600)" href="#" data-target="modal-example" onClick="toggleModal(event)" role="button" class="mt-2 mr-2">Kup teraz!</a>
                             <b>7 600,00 zł</b>
                         </div>
                     </article>
@@ -81,11 +94,11 @@
                 </div>
                 
                 <div>
-                    
-                    <article class="md:mt-12">
+                    <article>
                         <img src="src/laptopy/1.jpg" alt="">
                             <b>HP Spectre 13 x360 i7‑1165G7/16GB/1TB/W10</b>
-                                <hr/><a data-target="modal-example" onClick="toggleModal(event)" role="button" class="mt-2 mr-2">Kup teraz!</a>
+                                <hr/>
+                                <a @click="kup(4199)" href="#" data-target="modal-example" onClick="toggleModal(event)" role="button" class="mt-2 mr-2">Kup teraz!</a>
                             <b>4 199,00 zł</b>
                     </article>
                     
@@ -96,29 +109,23 @@
                             </div>
                             
                             <div>
-                            <hr/><a data-target="modal-example" onClick="toggleModal(event)" role="button" class="mt-2 mr-2">Kup teraz!</a>
+                            <hr/><a @click="kup(129)" href="#" data-target="modal-example" onClick="toggleModal(event)" role="button" class="mt-2 mr-2">Kup teraz!</a>
                                     <b>129,00 zł</b>
                             </div>
                     
                     </article>
                 </div>
                 
-                <div>
-                    <a href="koszyk.html" class="contrast flex">
-                        <i class="gg-shopping-cart"></i>
-                            <p class="koszyk ml-2" >
-                            Koszyk
-                            </p>
-                    </a>
-                    
-                    <article class="md:mt-0.5">
+                <div>                    
+                    <article>
                         <img src="src/phone/20.jpg" alt="">
                             <div>
                                 <b>OnePlus 8T 5G 8/128GB 5G Lunar Silver 120Hz</b>
                             </div>
                         
                             <div>
-                                <hr/><a data-target="modal-example" onClick="toggleModal(event)" role="button" class="mt-2 mr-2">Kup teraz!</a>
+                                <hr/>
+                                <a @click="kup(2099)" href="#" data-target="modal-example" onClick="toggleModal(event)" role="button" class="mt-2 mr-2">Kup teraz!</a>
                                     <b>2 099,00 zł</b>
                             </div>
                     </article>
@@ -129,7 +136,7 @@
                                 <b>Xiaomi POCO X3 PRO NFC 6/128GB Frost Blue 120Hz</b>
                             </div>
                             <div>
-                                <hr/><a data-target="modal-example" onClick="toggleModal(event)" role="button" class="mt-2 mr-2">Kup teraz!</a>
+                                <hr/><a @click="kup(899)" href="#" data-target="modal-example" onClick="toggleModal(event)" role="button" class="mt-2 mr-2">Kup teraz!</a>
                                 <b>899,00 zł</b>
                             </div>
                     </article>
@@ -148,17 +155,21 @@
     <script>
         var app = new Vue({
             el: '#app',
-            data: 
-            {
-                message: 'Hello Vue!'
-                
-            }
+            data: {
+                suma: 0
+            },
+            methods: {
+                kup: function(val){
+                    this.suma += val;
+                }
+            },
         })  
     </script>
 
 <!-- Modal -->
     <dialog  id="modal-example">
         <article>
+            
             <a href="#close" aria-label="Close" class="close" data-target="modal-example" onClick="toggleModal(event)">
             </a>
     
@@ -170,12 +181,14 @@
             
             <footer>
                 <a href="#cancel" role="button" class="secondary" data-target="modal-example" onClick="toggleModal(event)">
+                Kontynuuj zakupy
+                </a>
+
+                <a href="koszyk.html" role="button">
                 Przejdź do koszyka
                 </a>
                 
-                <a href="#confirm" role="button" data-target="modal-example" onClick="toggleModal(event)">
-                Kontynuuj zakupy
-                </a>
+
             </footer>
         </article>
     </dialog>
